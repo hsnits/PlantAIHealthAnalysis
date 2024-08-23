@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "PlantAIHelthAnalysis",
-    "slug": "PlantAIHelthAnalysis",
+    "name": "aiplanthealth",
+    "slug": "aiplanthealth",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
