@@ -1,14 +1,18 @@
 import React from 'react';
-import { ImageBackground, StyleSheet, TextInput, TouchableOpacity, Text } from 'react-native';
-import { useRouter } from 'expo-router';
+import { ImageBackground, StyleSheet, TextInput, TouchableOpacity, Text, View } from 'react-native';
+import { Link, useRouter } from 'expo-router';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+
 
 export default function LoginScreen() {
   const router = useRouter();
 
-  const handleLoginPress = () => {
-    router.push('/(tabs)/'); 
+  const handleLetsCarePress = () => {
+    router.push('/LetsCareScreen'); 
+  };
+  const handleSignupPress = () => {
+    router.push('/SignupScreen')
   };
 
   return (
@@ -19,19 +23,36 @@ export default function LoginScreen() {
       <ThemedView style={styles.container}>
         <ThemedText type="title" style={styles.title}>Login</ThemedText>
         <ThemedText type="title" style={styles.subtitle}>Sign in to continue.</ThemedText>
-        <TextInput
-          style={styles.input}
-          placeholder="Username"
-          placeholderTextColor="#999" // Adjusted placeholder color for better contrast
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Password"
-          placeholderTextColor="#999"
-          secureTextEntry
-        />
-        <TouchableOpacity style={styles.button} onPress={handleLoginPress}>
+        
+        <View style={styles.inputContainer}>
+          <Text style={styles.label}>Username</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Enter your username"
+            placeholderTextColor="#999"
+          />
+        </View>
+
+        <View style={styles.inputContainer}>
+          <Text style={styles.label}>Password</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Enter your password"
+            placeholderTextColor="#999"
+            secureTextEntry
+          />
+        </View>
+
+        <TouchableOpacity style={styles.button} onPress={handleLetsCarePress}>
           <Text style={styles.buttonText}>Login</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={handleSignupPress} >
+        <ThemedText type="title" style={styles.subtitle}>Not have account? 
+      
+          SignUp
+
+     
+        </ThemedText>
         </TouchableOpacity>
       </ThemedView>
     </ImageBackground>
@@ -62,10 +83,17 @@ const styles = StyleSheet.create({
     marginBottom: 24,
     textAlign: 'center',
   },
+  inputContainer: {
+    marginBottom: 16,
+  },
+  label: {
+    color: '#fff',
+    marginBottom: 8,
+    fontSize: 16,
+  },
   input: {
     backgroundColor: 'rgba(255, 255, 255, 0.7)', 
     padding: 12,
-    marginBottom: 16,
     borderRadius: 10,
     color: '#333', 
   },
@@ -82,6 +110,6 @@ const styles = StyleSheet.create({
   buttonText: {
     color: '#ffff', 
     fontSize: 18,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
 });
